@@ -10,7 +10,7 @@ import { TesteClass } from "./database/registreDb/Db.registre";
 
 const app = express();
 
-const teste = new TesteClass();
+
 
 app.use(cors(options));
 app.use(express.json());
