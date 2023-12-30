@@ -6,15 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("./routes/routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
-const cors_1 = __importDefault(require("cors"));
-const app_cors_1 = __importDefault(require("./middleware/cors/app.cors"));
 const registre_routes_1 = __importDefault(require("./routes/registre.routes"));
+const get_routes_1 = __importDefault(require("./routes/get.routes"));
+const app_cors_1 = __importDefault(require("../src/middleware/cors/app.cors"));
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)(app_cors_1.default));
+// app.use(cors(options));
 app.use(express_1.default.json());
 app.use(routes_1.default);
+app.use(app_cors_1.default);
 app.use(auth_routes_1.default);
 app.use(registre_routes_1.default);
+app.use(get_routes_1.default);
 // Adicione esse middleware para configurar os cabeçalhos CORS
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:5173");
