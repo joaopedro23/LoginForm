@@ -1,7 +1,18 @@
 "use strict";
+// corsConfig.ts
 Object.defineProperty(exports, "__esModule", { value: true });
-const allowedOrigins = ['http://localhost:5173'];
-const options = {
-    origin: allowedOrigins
-};
-exports.default = options;
+const corsConfig = [
+    {
+        source: '/:path*',
+        headers: [
+            { key: 'Access-Control-Allow-Credentials', value: 'true' },
+            { key: 'Access-Control-Allow-Origin', value: '*' },
+            { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT' },
+            {
+                key: 'Access-Control-Allow-Headers',
+                value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization',
+            },
+        ],
+    },
+];
+exports.default = corsConfig;
