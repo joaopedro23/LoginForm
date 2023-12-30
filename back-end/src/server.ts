@@ -3,7 +3,7 @@ import routes from "./routes/routes";
 import authRoutes from "./routes/auth.routes";
 import cors from 'cors'
 import options from "./middleware/cors/app.cors";
-
+import allowCors from "../src/middleware/cors/app.cors"
 
 import authRegistre from "./routes/registre.routes";
 import { TesteClass } from "./database/registreDb/Db.registre";
@@ -13,6 +13,8 @@ const app = express();
 
 
 app.use(cors(options));
+
+
 app.use(express.json());
 app.use(routes);
 
