@@ -1,3 +1,13 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../assets/background.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .wrapper{
     width: 420px;
     background: transparent;
@@ -88,7 +98,8 @@
 .register-link p a {
     color: #fff;
     text-decoration: none;
-    font-weight: 600; 
+    font-weight: 600;
+    cursor: pointer; 
 }
 
 .register-link p a:hover {

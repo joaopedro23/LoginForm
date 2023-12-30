@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import './app.form.css'
+import CustomModal from "../components/popupModal/popUpModal"
+
 
 type CreateUserDataFormData = {
   userData:{
@@ -16,9 +18,7 @@ type CreateUserDataFormData = {
 };
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const url = 'http://localhost:3000/login'
-
-
+const url = 'https://currency-78wflzg49-joaopedro23.vercel.app/login'
 
 const creatUserSchema = z.object({
   userData: z.object({
@@ -43,8 +43,19 @@ export default function AppForm() {
     resolver: zodResolver(creatUserSchema)
   })
 
+                // popUpModal //
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  const openModal = () => {
+    setModalIsOpen(true)
+  }
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
+
+                // fim da popUpModal //
+
   const navigate = useNavigate();
-  
   async function createUser(data: CreateUserDataFormData) {
     console.log('Função createUser foi acionada!');
     try {
@@ -65,15 +76,13 @@ export default function AppForm() {
           navigate('/client');
         } else if (redirectTo === '/admin') {
           navigate('/admin'); 
-        } else {
-          console.error('Flag de redirecionamento não encontrada na resposta do servidor');
-        }
+        } 
+        
         await new Promise((resolve) => setTimeout(resolve, 1000));
         
       } else { 
         console.error('Token não encontrado na resposta do servidor');
       }
-
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
       setOutput('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
@@ -112,10 +121,10 @@ export default function AppForm() {
 
         <button type="submit" >Login</button>
         <div className="register-link">
-          <p>Nao tenho uma conta ainda?<a href="#">Registra</a></p>
+          <p>Nao tenho uma conta ainda?<a onClick={openModal}> Registra</a></p>
         </div>
       </form>
-      <pre>{output}</pre>
+      <CustomModal isOpen={modalIsOpen} closeModal={closeModal} />
     </div>
   </main>  
     
