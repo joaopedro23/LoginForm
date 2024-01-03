@@ -12,7 +12,7 @@ datasource db {
 
 model registro {
   id       String @id
-  name     String
+  username     String
   email    String 
   password String
 
