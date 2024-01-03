@@ -8,9 +8,9 @@ PGDATABASE = decodeURIComponent(PGDATABASE || '');
 
 const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?option=project=${ENDPOINT_ID}`;
 
-const url = `postgres://dbneon_user:d88GpXV2Wglb4SxXxKDrcvVQ98dgLhhd@dpg-cm8c90ocmk4c7391dgsg-a.ohio-postgres.render.com/dbneon`
 
-export const sql = postgres(url, {ssl:true} );
+
+export const sql = postgres(URL, {ssl:true} );
 
 const DbData = postgres({
     host: PGHOST || '',
