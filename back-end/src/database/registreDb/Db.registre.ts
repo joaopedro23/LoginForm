@@ -48,7 +48,7 @@ async creatRegistre(registre:Registro) {
     const registreId = generateUUID();
     const {username, email, password} = registre
     await sql`
-    insert into registro (id, username, email, password)
+    insert into registros (id, username, email, password)
     VALUES (${registreId}, ${username}, ${email}, ${password})`
 }
 }

@@ -6,7 +6,7 @@ import { sql } from '../db';
 export class ValidarEmail {
     async verificarExistenciaEmail(email: string, password: string): Promise<boolean> {
         try {
-            const result = await sql`SELECT COUNT(*) AS count FROM registro WHERE email = ${email} AND password = ${password}`;
+            const result = await sql`SELECT COUNT(*) AS count FROM registros WHERE email = ${email} AND password = ${password}`;
             
             if (result && result[0] && result[0].count !== undefined) {
                 const rowCount: number = result[0].count;

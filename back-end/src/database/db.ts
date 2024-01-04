@@ -8,9 +8,7 @@ PGDATABASE = decodeURIComponent(PGDATABASE || '');
 
 const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?option=project=${ENDPOINT_ID}`;
 
-const urlstring : string = process.env.STRING_URL || ""
-
-export const sql = postgres(urlstring, {ssl:true} );
+export const sql = postgres(URL, {ssl:true} );
 
 const DbData = postgres({
     host: PGHOST || '',
